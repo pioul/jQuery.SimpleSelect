@@ -1,0 +1,92 @@
+.hidden_select_container {
+	width: 0;
+	height: 0;
+	overflow: hidden;
+}
+
+.simpleselect {
+	position: relative;
+	color: #333;
+}
+
+.simpleselect,
+.simpleselect .options {
+	width: 200px;
+}
+
+/* compensation for the border */
+.simpleselect .options {
+	width: 198px;
+}
+
+.simpleselect,
+.simpleselect .placeholder,
+.simpleselect .options .option {
+    height: 40px;
+    line-height: 40px;
+}
+
+.simpleselect .placeholder,
+.simpleselect .options .option,
+.simpleselect .options .optgroup .optgroup-label {
+	padding: 0 10px;
+	cursor: pointer;
+}
+
+
+.simpleselect .options .optgroup .optgroup-label {
+	cursor: default;
+	font-weight: bold;
+}
+
+.simpleselect .options .optgroup .option,
+.simpleselect.has-optgroup .placeholder {
+	padding: 0 20px;
+}
+
+.simpleselect .placeholder,
+.simpleselect .options {
+	background: #e3e3e3;
+	border: 1px solid #bbb;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: inset 0 0 1px 1px #f6f6f6;
+	-moz-box-shadow: inset 0 0 1px 1px #f6f6f6;
+	box-shadow: inset 0 0 1px 1px #f6f6f6;
+}
+
+.simpleselect .options {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.simpleselect .options .option,
+.simpleselect .options .optgroup,
+.simpleselect .options .optgroup .optgroup-label {
+	border-bottom: 1px solid #bbb;
+}
+
+.simpleselect .options .option {
+	-webkit-box-shadow: inset 0 0 1px 1px #f6f6f6;
+	-moz-box-shadow: inset 0 0 1px 1px #f6f6f6;
+	box-shadow: inset 0 0 1px 1px #f6f6f6;
+}
+
+.simpleselect .placeholder:hover,
+.simpleselect.active .placeholder,
+.simpleselect .options .option.active {
+	background: #d9d9d9;
+}
+
+.simpleselect.disabled .placeholder,
+.simpleselect.disabled .placeholder:hover {
+	background: #f3f3f3;
+	color: #aaa;
+	border-color: #eee;
+	cursor: default;
+}
