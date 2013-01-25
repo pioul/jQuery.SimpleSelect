@@ -245,6 +245,10 @@
 							}
 						}
 					});
+				// disable the simpleselect if the select is disabled
+				if(simpleselectrefdata.ref.prop("disabled")){
+					simpleselectrefdata.disable();
+				}
 				// container for options
 				var simpleoptions = '<div class="options">';
 				// add options to the container
