@@ -292,10 +292,11 @@
 		// additional plugin call (function call)
 		} else {
 			
+			var args = Array.prototype.slice.call(arguments, 1);
 			t.each(function(){
 				var t = $(this);
 				if(typeof(t.data('simpleselectref')[mixed]) == 'function'){
-					t.data('simpleselectref')[mixed](Array.prototype.slice.call(arguments, 1));
+					t.data('simpleselectref')[mixed](args);
 				}
 			});
 
