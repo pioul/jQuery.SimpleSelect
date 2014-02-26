@@ -1,0 +1,17 @@
+body {
+	padding: 200px;
+	margin: 0;
+	background: #fff;
+	font: 14px Arial, Helvetica, Geneva, sans-serif;
+	line-height: 1.5em;
+	color: #3a3a3a;
+}
+
+body > div:first-child {
+	display: inline-block;
+	margin-bottom: 40px;
+}
+
+label {
+	display: block;
+}

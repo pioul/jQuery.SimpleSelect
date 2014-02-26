@@ -1,0 +1,25 @@
+body {
+	padding: 160px;
+	margin: 0;
+	background: #fff;
+	font: 14px Arial, Helvetica, Geneva, sans-serif;
+	line-height: 1.5em;
+	color: #3a3a3a;
+}
+
+body > div {
+	float: left;
+	margin: 40px 40px 0 0;
+}
+
+.answer {
+	padding-top: 29px;
+}
+
+.answer #cat-breed-display {
+	font-weight: bold;
+}
+
+label {
+	display: block;
+}
