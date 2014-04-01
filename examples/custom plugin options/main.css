@@ -1,8 +1,14 @@
 body {
-	padding: 200px;
+	padding: 100px;
 	margin: 0;
 	background: #fff;
 	font: 14px Arial, Helvetica, Geneva, sans-serif;
 	line-height: 1.5em;
 	color: #3a3a3a;
+}
+
+.placeholder-text {
+	margin: 40px 0;
+	color: #aaa;
+	font-style: italic;
 }

@@ -10,6 +10,7 @@
 
 	// Define variables and methods that all plugin instances have in common
 	var windowHeight = null,
+		documentHeight = null,
 		activeSimpleselects = [],
 		isSsActivationForbidden = false,
 		isNextDocumentClickEventDisabled = false,
@@ -19,7 +20,8 @@
 			// Override default options
 			options = $.extend({}, {
 				fadingDuration: (options && options.fadeSpeed) || 0,
-				containerMargin: 5
+				containerMargin: 5,
+				displayContainerInside: "window"
 			}, options);
 
 			// Loop through all selects
@@ -270,12 +272,13 @@
 		positionAroundSsOption = function(ssOption) {
 			resetSsOptionsContainerCSS.call(this);
 			
-			var ssOptionPosition, freeVisibleSpaceAbove, freeVisibleSpaceBelow, spaceLeftAboveAfterPositioning, spaceLeftBelowAfterPositioning, excessSpaceAbove, excessSpaceBelow;
+			var ssOptionPosition, freeVisibleSpaceAbove, freeVisibleSpaceBelow, spaceLeftAboveAfterPositioning, spaceLeftBelowAfterPositioning, excessSpaceAbove, excessSpaceBelow,
+				shouldDisplayContainerInsideWindow = this.options.displayContainerInside == "window";
 
 			var computePositioningValues = $.proxy(function() {
 				ssOptionPosition = ssOption.position();
-				freeVisibleSpaceAbove = this.ssPlaceholderOffset.top - $(window).scrollTop() - this.options.containerMargin;
-				freeVisibleSpaceBelow = windowHeight - (freeVisibleSpaceAbove + this.options.containerMargin) - this.ssPlaceholderHeight - this.options.containerMargin;
+				freeVisibleSpaceAbove = this.ssPlaceholderOffset.top - this.options.containerMargin - (shouldDisplayContainerInsideWindow? $(window).scrollTop() : 0);
+				freeVisibleSpaceBelow = (shouldDisplayContainerInsideWindow? windowHeight : documentHeight) - freeVisibleSpaceAbove - this.ssPlaceholderHeight - 2 * this.options.containerMargin;
 				spaceLeftAboveAfterPositioning = freeVisibleSpaceAbove - ssOptionPosition.top;
 				spaceLeftBelowAfterPositioning = freeVisibleSpaceBelow - (this.ssOptionsContainerOuterHeight - ssOptionPosition.top - this.ssPlaceholderHeight);
 				excessSpaceAbove = spaceLeftAboveAfterPositioning < 0? Math.abs(spaceLeftAboveAfterPositioning) : 0;
@@ -380,6 +383,7 @@
 					addToActiveSimpleselects.call(this, this.simpleselect);
 					var optionToSelect = getSsOptionToSelect.call(this);
 					selectSsOption.call(this, optionToSelect);
+					documentHeight = $(document).height(); // Save the document height before it possibly changes due to the options list being made visible
 					this.ssOptionsContainer
 						.fadeTo(0, 0)
 						.fadeTo(this.options.fadingDuration, 1);
